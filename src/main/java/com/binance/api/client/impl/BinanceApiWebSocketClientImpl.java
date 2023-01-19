@@ -36,6 +36,15 @@ public class BinanceApiWebSocketClientImpl implements BinanceApiWebSocketClient,
     }
 
     @Override
+    public Closeable onPartialDepthEvent(String symbols, BinanceApiCallback<PartialDepthEvent> callback) {
+        final String channel = Arrays.stream(symbols.split(","))
+                .map(String::trim)
+                .map(s -> String.format("%s@depth5@100ms", s))
+                .collect(Collectors.joining("/"));
+        return createNewWebSocket(channel, new BinanceApiWebSocketListener<>(callback, PartialDepthEvent.class));
+    }
+
+    @Override
     public Closeable onCandlestickEvent(String symbols, CandlestickInterval interval, BinanceApiCallback<CandlestickEvent> callback) {
         final String channel = Arrays.stream(symbols.split(","))
                 .map(String::trim)
