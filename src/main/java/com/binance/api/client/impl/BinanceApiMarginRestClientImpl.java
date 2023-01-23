@@ -63,6 +63,11 @@ public class BinanceApiMarginRestClientImpl implements BinanceApiMarginRestClien
         return executeSync(binanceApiService.getMyMarginTrades(symbol, null, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis()));
     }
 
+    @Override
+    public List<Trade> getMyTrades(String symbol, Long orderId) {
+        return executeSync(binanceApiService.getMyMarginTrades(symbol, orderId, null, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis()));
+    }
+
     // user stream endpoints
 
     @Override

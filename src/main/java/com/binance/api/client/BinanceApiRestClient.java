@@ -260,6 +260,8 @@ public interface BinanceApiRestClient {
   
   List<Trade> getMyTrades(String symbol, Long fromId);
 
+  List<Trade> getMyTradesForOrder(String symbol, Long orderId);
+
   /**
    * Submit a withdraw request.
    *
