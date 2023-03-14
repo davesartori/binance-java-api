@@ -231,6 +231,8 @@ public interface BinanceApiRestClient {
    */
   Account getAccount();
 
+  DailyAccountSnapshot getDailySpotAccountSnapshot();
+  DailyAccountSnapshot getDailyMarginAccountSnapshot();
   /**
    * Get trades for a specific account and symbol.
    *

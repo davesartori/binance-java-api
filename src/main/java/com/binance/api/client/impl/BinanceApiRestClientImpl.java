@@ -206,6 +206,16 @@ public class BinanceApiRestClientImpl implements BinanceApiRestClient {
 	}
 
 	@Override
+	public DailyAccountSnapshot getDailySpotAccountSnapshot() {
+		return executeSync(binanceApiService.getDailyAccountSnapshot("SPOT", System.currentTimeMillis()));
+	}
+
+	@Override
+	public DailyAccountSnapshot getDailyMarginAccountSnapshot() {
+		return executeSync(binanceApiService.getDailyAccountSnapshot("MARGIN", System.currentTimeMillis()));
+	}
+
+	@Override
 	public List<Trade> getMyTrades(String symbol, Integer limit, Long fromId, Long recvWindow, Long timestamp) {
 		return executeSync(binanceApiService.getMyTrades(symbol, null, limit, fromId, recvWindow, timestamp));
 	}
